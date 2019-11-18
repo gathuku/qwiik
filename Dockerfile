@@ -19,5 +19,6 @@ WORKDIR /qwiik
 # install gem bundler
 RUN gem install bundler
 
-
 COPY --chown=deploy:admin . /qwiik
+
+RUN bundle install
