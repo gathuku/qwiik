@@ -18,13 +18,33 @@ Or install it yourself as:
     $ gem install qwiik
 
 ## Configuration
-To get started configure the gem with your own credentials
+To get started configure the gem with your own credentials.
+```ruby
+Qwiik.configuration do |config|
+  config.confiramtion_url = "https://example.com/confirm",
+  config.validation_url = "https://example.com/validate",
+  config.short_code = 600398
+
+end
+
+```
 ## Usage
 The gem contains the following methods.
 1. __`register_urls`__ - Register C2B urls ie `confirmation_url`and `validation_url`.
 
 2. __`payouts`__ - Used to send a B2C payment to customers.Upon success  cunstomer wallet is credited. This could be `promotion payment`, `salary` etc
 
+## Register Urls
+`register_urls` method is used.The method requires `response_type` parameters.
+
+syntax
+```
+register_urls("Completed")
+```
+
+> Parameters can be `Completed` or `Cancelled`.
+>> When completed it doent care what response is sent by your `validation_url` and completes the transaction.
+>> When `Cancelled` you must respond with `success` in your validation_url to complete the transaction
 ## Development
 
 After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake test` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
