@@ -1,9 +1,6 @@
 # Qwiik
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/qwiik`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
-
+A gem for cunsuming daraja 2.0 API.
 ## Installation
 
 Add this line to your application's Gemfile:
@@ -20,9 +17,13 @@ Or install it yourself as:
 
     $ gem install qwiik
 
+## Configuration
+To get started configure the gem with your own credentials
 ## Usage
+The gem contains the following methods.
+1. __`register_urls`__ - Register C2B urls ie `confirmation_url`and `validation_url`.
 
-TODO: Write usage instructions here
+2. __`payouts`__ - Used to send a B2C payment to customers.Upon success  cunstomer wallet is credited. This could be `promotion payment`, `salary` etc
 
 ## Development
 
