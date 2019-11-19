@@ -27,7 +27,8 @@ Gem::Specification.new do |spec|
   spec.executables   = spec.files.grep(%r{^exe/}) { |f| File.basename(f) }
   spec.require_paths = ["lib"]
 
-  gem.add_dependency 'faraday'
-  gem.add_dependency 'json'
-  gem.add_dependency 'webmock'
+  # gem.add_dependency 'faraday', '~> 0.17.0'
+  # gem.add_dependency 'json', '~> 2.2'
+  # gem.add_dependency 'webmock', '~> 3.7', '>= 3.7.6'
+
 end

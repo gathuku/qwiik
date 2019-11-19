@@ -1,21 +1,25 @@
-PATH
-  remote: .
-  specs:
-    qwiik (0.1.0)
-
 GEM
   remote: https://rubygems.org/
   specs:
     addressable (2.7.0)
       public_suffix (>= 2.0.2, < 5.0)
+    byebug (11.0.1)
+    coderay (1.1.2)
     crack (0.4.3)
       safe_yaml (~> 1.0.0)
     faraday (0.17.0)
       multipart-post (>= 1.2, < 3)
     hashdiff (1.0.0)
-    json (1.8.6)
+    json (2.2.0)
+    method_source (0.9.2)
     minitest (5.13.0)
     multipart-post (2.1.1)
+    pry (0.12.2)
+      coderay (~> 1.1.0)
+      method_source (~> 0.9.0)
+    pry-byebug (3.7.0)
+      byebug (~> 11.0)
+      pry (~> 0.10)
     public_suffix (4.0.1)
     rake (12.3.3)
     safe_yaml (1.0.5)
@@ -28,12 +32,13 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  faraday
-  json (~> 1.8, >= 1.8.3)
+  byebug (~> 11.0, >= 11.0.1)
+  faraday (~> 0.17.0)
+  json (~> 2.2)
   minitest (~> 5.0)
-  qwiik!
+  pry-byebug (~> 3.7)
   rake (~> 12.0)
-  webmock
+  webmock (~> 3.7, >= 3.7.6)
 
 BUNDLED WITH
    2.0.2
