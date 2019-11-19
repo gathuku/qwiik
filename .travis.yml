@@ -1,6 +1,15 @@
----
 language: ruby
 cache: bundler
 rvm:
-  - 2.7.0
-before_install: gem install bundler -v 2.1.0.pre.2
+  - 2.6.3
+before_install: gem install bundler -v 2.0.2
+
+test:
+ script:
+   - bundle exec rake test
+
+deploy:
+  provider: rubygems
+  api_key: $RUBY_GEM_API_KEY
+  on:
+    tags: true
