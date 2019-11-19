@@ -1,6 +1,12 @@
 # Qwiik
 
+[![Build Status](https://travis-ci.org/gathuku/qwiik.png?branch=master)](https://travis-ci.org/gathuku/qwiik)
+[![Latest Version](https://img.shields.io/github/release/gathuku/qwiik.svg?style=flat-square)](https://github.com/gathuku/qwiik/releases)
+[![Issues](https://img.shields.io/github/issues/gathuku/laravel_mpesa.svg?style=flat-square)](https://github.com/gathuku/qwiik/issues)
+[![Twiter](https://img.shields.io/twitter/url/https/github.com/gathuku/qwiik.svg?style=social?style=social)](https://twitter.com/Gathukumose)
+
 A gem for cunsuming daraja 2.0 API.
+
 ## Installation
 
 Add this line to your application's Gemfile:
