@@ -22,7 +22,8 @@ module Qwiik
 end
 
 class Configuration
-  attr_accessor :confirmation_url, :validation_url, :short_code, :env
+  attr_accessor :confirmation_url, :validation_url,
+                :short_code, :env, :key, :secret
 
   def initialize
     @confirmation_url = 'https://example.com/confirmation'
