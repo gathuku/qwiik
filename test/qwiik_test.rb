@@ -3,54 +3,47 @@
 require 'test_helper'
 
 class QwiikTest < Minitest::Test
-  def test_that_it_has_a_version_number
-    refute_nil ::Qwiik::VERSION
+  def setup
+    Qwiik.configure do |config|
+      config.confirmation_url = 'https://example.com/confirm'
+      config.validation_url = 'https://example.com/validate'
+    end
+    @headers = {
+      'accept' => 'application/vnd.api+json',
+      'Content-Type' => 'application/vnd.api+json'
+    }
+    @url = 'https://api-staging.qwiik.com'
   end
 
   def test_it_can_configure
-    Qwiik.configure do |config|
-      config.confirmation_url = 'https://example.com/confirm'
-      congig.validation_url = 'https://example.com/validate'
-    end
-
     assert_equal Qwiik.configuration.confirmation_url, 'https://example.com/confirm'
     assert_equal Qwiik.configuration.validation_url, 'https://example.com/validate'
  end
 
   def test_it_registers_ulrls
-    url = 'https://virtserver.swaggerhub.com/zegetech/mpesaUniAPI/1.0/mpesa/urls'
-    headers = {
-      'accept' => 'application/vnd.api+json',
-      'Content-Type' => 'application/vnd.api+json'
-    }
     body = {
       data: {
         type: 'urls',
         id: 1,
         attributes: {
-          confirmation_url: 'https://example.com/confirmation',
-          validation_url: 'https://example.com/validation',
+          confirmation_url: 'https://example.com/confirm',
+          validation_url: 'https://example.com/validate',
           short_code: '600234',
           response_type: 'Completed'
         }
       }
     }
-    stub_request(:post, url)
+    stub_request(:post, @url)
       .with(
         body: body.to_json,
-        headers: headers
+        headers: @headers
       )
       .to_return(status: 200, body: '', headers: {})
 
-    assert_equal 200, Qwiik.register_urls('Completed').status
+    assert_equal 200, Qwiik::QwiikMain.register_urls('Completed').status
   end
 
   def test_payouts
-    url = 'https://virtserver.swaggerhub.com/zegetech/mpesaUniAPI/1.0/mpesa/payouts'
-    headers = {
-      'accept' => 'application/vnd.api+json',
-      'Content-Type' => 'application/vnd.api+json'
-    }
     body = {
       data: {
         type: 'payouts',
@@ -68,9 +61,9 @@ class QwiikTest < Minitest::Test
       }
     }
 
-    stub_request(:post, url)
-      .with(body: body.to_json, headers: headers)
+    stub_request(:post, @url)
+      .with(body: body.to_json, headers: @headers)
       .to_return(status: 200, body: '', headers: {})
-    assert_equal 200, Qwiik.payouts('BusinessPayment', 1000, '25472264885', '142345654').status
+    assert_equal 200, Qwiik::QwiikMain.payouts('BusinessPayment', 1000, '25472264885', '142345654').status
   end
 end
