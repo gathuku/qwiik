@@ -33,6 +33,6 @@ class Minitest::Test
       'Content-Type' => 'application/vnd.api+json'
     }
     # default test url
-    @url = 'https://api-staging.qwwik.com'
+    @base_url = 'https://api-staging.qwwik.com'
   end
 end

@@ -8,7 +8,7 @@ class QwiikTest < Minitest::Test
     assert_equal Qwiik.configuration.validation_url, 'https://example.com/validate'
  end
 
-  def test_it_registers_ulrls
+  def test_it_registers_url
     body = {
       data: {
         type: 'urls',
@@ -22,7 +22,7 @@ class QwiikTest < Minitest::Test
       }
     }
     VCR.use_cassette('register_urls') do
-      res = Faraday.post(@url, body.to_json, @headers)
+      res = Faraday.post(@base_url + '/mpesa/urls', body.to_json, @headers)
       assert_equal(200, res.status)
     end
   end
@@ -46,7 +46,7 @@ class QwiikTest < Minitest::Test
     }
 
     VCR.use_cassette('payouts') do
-      res = Faraday.post(@url, body.to_json, @headers)
+      res = Faraday.post(@base_url + '/mpesa/payouts', body.to_json, @headers)
       assert_equal(200, res.status)
     end
   end

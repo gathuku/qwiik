@@ -36,4 +36,48 @@ http_interactions:
 '
     http_version: 
   recorded_at: Wed, 20 Nov 2019 10:07:06 GMT
+- request:
+    method: post
+    uri: https://api-staging.qwwik.com/mpesa/payouts
+    body:
+      encoding: UTF-8
+      string: '{"data":{"type":"payouts","id":1,"attributes":{"category":"BusinessPayment","amount":1000,"recipient_no":"25472264885","recipient_type":"msisdn","posted_at":"2019-11-20
+        13:23:06 +0300","recipient_id_type":"national_id","recipient_id_number":"12345567","reference":"142345654"}}}'
+    headers:
+      User-Agent:
+      - Faraday v0.17.0
+      Accept:
+      - application/vnd.api+json
+      Content-Type:
+      - application/vnd.api+json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 400
+      message: Bad Request
+    headers:
+      Content-Type:
+      - application/json
+      Vary:
+      - Origin
+      X-Generator:
+      - tyk.io
+      Date:
+      - Wed, 20 Nov 2019 10:23:07 GMT
+      Content-Length:
+      - '131'
+    body:
+      encoding: UTF-8
+      string: |-
+        {
+          "errors": [
+            {
+              "status": "400",
+              "detail": "Gateway Error: Bad request. Check Payload and try again."
+            }
+          ]
+        }
+    http_version: 
+  recorded_at: Wed, 20 Nov 2019 10:23:07 GMT
 recorded_with: VCR 5.0.0
