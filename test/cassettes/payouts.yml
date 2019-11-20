@@ -1,0 +1,39 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api-staging.qwwik.com/
+    body:
+      encoding: UTF-8
+      string: '{"data":{"type":"payouts","id":1,"attributes":{"category":"BusinessPayment","amount":1000,"recipient_no":"25472264885","recipient_type":"msisdn","posted_at":"2019-11-20
+        13:07:05 +0300","recipient_id_type":"national_id","recipient_id_number":"12345567","reference":"142345654"}}}'
+    headers:
+      User-Agent:
+      - Faraday v0.17.0
+      Accept:
+      - application/vnd.api+json
+      Content-Type:
+      - application/vnd.api+json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 404
+      message: Not Found
+    headers:
+      Content-Type:
+      - text/plain; charset=utf-8
+      X-Content-Type-Options:
+      - nosniff
+      Date:
+      - Wed, 20 Nov 2019 10:07:06 GMT
+      Content-Length:
+      - '19'
+    body:
+      encoding: UTF-8
+      string: '404 page not found
+
+'
+    http_version: 
+  recorded_at: Wed, 20 Nov 2019 10:07:06 GMT
+recorded_with: VCR 5.0.0

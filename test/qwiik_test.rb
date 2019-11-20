@@ -3,18 +3,6 @@
 require 'test_helper'
 
 class QwiikTest < Minitest::Test
-  def setup
-    Qwiik.configure do |config|
-      config.confirmation_url = 'https://example.com/confirm'
-      config.validation_url = 'https://example.com/validate'
-    end
-    @headers = {
-      'accept' => 'application/vnd.api+json',
-      'Content-Type' => 'application/vnd.api+json'
-    }
-    @url = 'https://api-staging.qwiik.com'
-  end
-
   def test_it_can_configure
     assert_equal Qwiik.configuration.confirmation_url, 'https://example.com/confirm'
     assert_equal Qwiik.configuration.validation_url, 'https://example.com/validate'
@@ -33,14 +21,10 @@ class QwiikTest < Minitest::Test
         }
       }
     }
-    stub_request(:post, @url)
-      .with(
-        body: body.to_json,
-        headers: @headers
-      )
-      .to_return(status: 200, body: '', headers: {})
-
-    assert_equal 200, Qwiik::QwiikMain.register_urls('Completed').status
+    VCR.use_cassette('register_urls') do
+      res = Faraday.post(@url, body.to_json, @headers)
+      assert_equal(200, res.status)
+    end
   end
 
   def test_payouts
@@ -61,9 +45,9 @@ class QwiikTest < Minitest::Test
       }
     }
 
-    stub_request(:post, @url)
-      .with(body: body.to_json, headers: @headers)
-      .to_return(status: 200, body: '', headers: {})
-    assert_equal 200, Qwiik::QwiikMain.payouts('BusinessPayment', 1000, '25472264885', '142345654').status
+    VCR.use_cassette('payouts') do
+      res = Faraday.post(@url, body.to_json, @headers)
+      assert_equal(200, res.status)
+    end
   end
 end
