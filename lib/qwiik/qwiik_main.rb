@@ -12,37 +12,53 @@ module Qwiik
       %(keyId="#{key}",algorithm="hmac-sha256",signature="#{url_encoded}")
     end
 
-    def payouts(category, amount, recipient_no, reference)
+    def payouts(category:, amount:, recipient_no:, reference:)
+      body = if category == 'BusinessBuyGoods'
+               {
+                 data: {
+                   type: 'payouts',
+                   id: SecureRandom.uuid,
+                   attributes: {
+                     "category": 'BusinessBuyGoods',
+                     "amount": amount,
+                     "recipient_no": recepient_no,
+                     "recipient_type": 'shortcode',
+                     "posted_at": '2019-03-18T17:22:09.651011Z',
+                     "reference": reference
+                   }
+                 }
+               }
+             else
+               {
+                 data: {
+                   type: 'payouts',
+                   id: SecureRandom.uuid,
+                   attributes: {
+                     category: category,
+                     amount: amount,
+                     recipient_no: recipient_no,
+                     recipient_type: 'msisdn',
+                     posted_at: '2019-03-18T17:22:09.651011Z',
+                     recipient_id_type: 'national_id',
+                     recipient_id_number: '12345567',
+                     reference: reference
+                   }
+                 }
+               }
+           end
+      # make the request
+      call(path: '/mpesa/payouts', body: body.to_json)
+    end
+
+    def call(path:, body:)
       headers = {
         'accept' => 'application/vnd.api+json',
         'Content-Type' => 'application/vnd.api+json',
         'Authorization' => generate_signature(key: ENV['QWIIK_PAYOUT_KEY'], secret: ENV['QWIIK_PAYOUT_SECRET']),
         'Date' => Time.now.strftime('%a, %d %b %Y %H:%M:%S EAT')
       }
-      body = {
-        data: {
-          type: 'payouts',
-          id: SecureRandom.uuid,
-          attributes: {
-            category: category,
-            amount: amount,
-            recipient_no: recipient_no,
-            recipient_type: 'msisdn',
-            posted_at: '2019-03-18T17:22:09.651011Z',
-            recipient_id_type: 'national_id',
-            recipient_id_number: '12345567',
-            reference: reference
-          }
-        }
-      }
-      # make the request
-      call(path: '/mpesa/payouts', body: body.to_json, headers: headers)
-    end
-
-    def call(path:, body:, headers:)
       base_url = Qwiik.configuration.base_url
       Faraday.post(base_url + path, body, headers)
     end
 end
-  # end
 end
