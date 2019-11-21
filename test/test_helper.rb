@@ -24,6 +24,12 @@ end
 
 # default class
 class Minitest::Test
+  yaml_fixtures = Dir[File.expand_path('fixtures/**/*.y*ml', __dir__)].map do |f|
+    erb_yaml = ERB.new(File.read(f))
+    YAML.safe_load(erb_yaml.result)
+  end.inject(:merge)
+
+  FIXTURES = yaml_fixtures.freeze
   def setup
     # configure our gem
     Qwiik.configure do |config|

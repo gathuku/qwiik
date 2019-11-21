@@ -1,0 +1,38 @@
+---
+customer:
+  data:
+    attributes:
+      amount: 100
+      category: BusinessPayment
+      posted_at: "2019-03-18T17:22:09.651011Z"
+      recipient_id_number: "21212121"
+      recipient_id_type: national_id
+      recipient_no: "0722000024"
+      recipient_type: msisdn
+      reference: "12345678"
+    id: e18dc5d7-bc39-4e8e-a4c5-f08ed81fee3f
+    type: payouts
+paybill:
+  data:
+    attributes:
+      amount: 1000
+      category: BusinessPayBill
+      posted_at: "2019-03-18T17:22:09.651011Z"
+      recipient_id_number: "21212121"
+      recipient_id_type: national_id
+      recipient_no: "601000"
+      recipient_type: shortcode
+      reference: "7000"
+    id: bf52cc36-54c5-4bdc-a13d-ce0f8d9de1ff
+    type: payouts
+till:
+  data:
+    attributes:
+      amount: 1000
+      category: BusinessBuyGoods
+      posted_at: "2019-03-18T17:22:09.651011Z"
+      recipient_no: "116261"
+      recipient_type: shortcode
+      reference: "7000"
+    id: d3ea82ea-72ca-4243-aa87-1a26dc1b5dac
+    type: payouts
