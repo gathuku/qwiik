@@ -1,0 +1,57 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api-staging.qwwik.com/mpesa/payouts
+    body:
+      encoding: UTF-8
+      string: '{"data":{"attributes":{"amount":1000,"category":"BusinessBuyGoods","posted_at":"2019-03-18T17:22:09.651011Z","recipient_no":"116261","recipient_type":"shortcode","reference":"7000"},"id":"45ec9eea-e35d-494a-abc7-b87471d78bf1","type":"payouts"}}'
+    headers:
+      User-Agent:
+      - Faraday v0.17.0
+      Accept:
+      - application/vnd.api+json
+      Content-Type:
+      - application/vnd.api+json
+      Authorization:
+      - keyId="0f14b9acfedf4993ba73921e32de169b",algorithm="hmac-sha256",signature="mVj%2Fak0ZY2WDh1dPGjv1vutx9hGkKe5brWdvYL%2F3Luw%3D"
+      Date:
+      - Thu, 21 Nov 2019 16:06:46 EAT
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Length:
+      - '176'
+      Content-Type:
+      - application/vnd.api+json
+      Date:
+      - Thu, 21 Nov 2019 13:06:49 GMT
+      Server:
+      - tyk
+      Vary:
+      - Origin
+      X-Ratelimit-Limit:
+      - '0'
+      X-Ratelimit-Remaining:
+      - '0'
+      X-Ratelimit-Reset:
+      - '0'
+    body:
+      encoding: UTF-8
+      string: |-
+        {
+          "data": {
+            "type": "responses",
+            "id": "AG_20191121_000077d2ee5a5a721193",
+            "attributes": {
+              "resource_id": "45ec9eea-e35d-494a-abc7-b87471d78bf1"
+            }
+          }
+        }
+    http_version: 
+  recorded_at: Thu, 21 Nov 2019 13:06:49 GMT
+recorded_with: VCR 5.0.0
