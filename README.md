@@ -2,6 +2,7 @@
 
 [![Build Status](https://travis-ci.org/gathuku/qwiik.png?branch=master)](https://travis-ci.org/gathuku/qwiik)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/b7e3c26ac88d4b2d81524087a17d09f4)](https://www.codacy.com/manual/gathuku/qwiik?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=gathuku/qwiik&amp;utm_campaign=Badge_Grade)
+[![Coverage Status](https://coveralls.io/repos/github/gathuku/qwiik/badge.svg?branch=master)](https://coveralls.io/github/gathuku/qwiik?branch=master)
 [![Latest Version](https://img.shields.io/github/release/gathuku/qwiik.svg?style=flat-square)](https://github.com/gathuku/qwiik/releases)
 [![Issues](https://img.shields.io/github/issues/gathuku/laravel_mpesa.svg?style=flat-square)](https://github.com/gathuku/qwiik/issues)
 [![Twiter](https://img.shields.io/twitter/url/https/github.com/gathuku/qwiik.svg?style=social?style=social)](https://twitter.com/Gathukumose)
