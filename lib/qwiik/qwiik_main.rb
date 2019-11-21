@@ -1,59 +1,48 @@
 # frozen_string_literal: true
 
+# extends module qwiik
 module Qwiik
-  module QwiikMain
-    def self.set_url
-      if Qwiik.configuration.env == 'sandbox'
-        'https://api-staging.qwiik.com'
-      else
-        'https://api.qwiik.com'
-     end
+  class << self
+    def generate_signature(key:, secret:)
+      date = Time.now.strftime('%a, %d %b %Y %H:%M:%S EAT')
+      date_to_encode = "date: #{date}"
+      hmac_hash = OpenSSL::HMAC.digest('SHA256', secret, date_to_encode)
+      encoded_hmac_hash = Base64.strict_encode64(hmac_hash)
+      url_encoded = URI.encode_www_form_component(encoded_hmac_hash)
+      %(keyId="#{key}",algorithm="hmac-sha256",signature="#{url_encoded}")
     end
 
-    def self.register_urls(response_type)
+    def payouts(category, amount, recipient_no, reference)
       headers = {
         'accept' => 'application/vnd.api+json',
-        'Content-Type' => 'application/vnd.api+json'
-      }
-      body = {
-        data: {
-          type: 'urls',
-          id: 1,
-          attributes: {
-            confirmation_url: Qwiik.configuration.confirmation_url,
-            validation_url: Qwiik.configuration.validation_url,
-            short_code: Qwiik.configuration.short_code,
-            response_type: response_type
-          }
-        }
-      }
-
-      Faraday.post(set_url, body.to_json, headers)
-       end
-
-    def self.payouts(category, amount, recipient_no, reference)
-      url = 'https://virtserver.swaggerhub.com/zegetech/mpesaUniAPI/1.0/mpesa/payouts'
-      headers = {
-        'accept' => 'application/vnd.api+json',
-        'Content-Type' => 'application/vnd.api+json'
+        'Content-Type' => 'application/vnd.api+json',
+        'Authorization' => generate_signature(key: ENV['QWIIK_PAYOUT_KEY'], secret: ENV['QWIIK_PAYOUT_SECRET']),
+        'Date' => Time.now.strftime('%a, %d %b %Y %H:%M:%S EAT')
       }
       body = {
         data: {
           type: 'payouts',
-          id: 1,
+          id: SecureRandom.uuid,
           attributes: {
             category: category,
             amount: amount,
             recipient_no: recipient_no,
             recipient_type: 'msisdn',
-            posted_at: Time.now,
+            posted_at: '2019-03-18T17:22:09.651011Z',
             recipient_id_type: 'national_id',
             recipient_id_number: '12345567',
             reference: reference
           }
         }
       }
-      Faraday.post(url, body.to_json, headers)
+      # make the request
+      call(path: '/mpesa/payouts', body: body.to_json, headers: headers)
+    end
+
+    def call(path:, body:, headers:)
+      base_url = Qwiik.configuration.base_url
+      Faraday.post(base_url + path, body, headers)
     end
 end
+  # end
 end

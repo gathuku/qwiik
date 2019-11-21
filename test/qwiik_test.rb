@@ -8,25 +8,6 @@ class QwiikTest < Minitest::Test
     assert_equal Qwiik.configuration.validation_url, 'https://example.com/validate'
  end
 
-  # def test_it_registers_url
-  #   body = {
-  #     data: {
-  #       type: 'urls',
-  #       id: 1,
-  #       attributes: {
-  #         confirmation_url: 'https://example.com/confirm',
-  #         validation_url: 'https://example.com/validate',
-  #         short_code: '600234',
-  #         response_type: 'Completed'
-  #       }
-  #     }
-  #   }
-  #   VCR.use_cassette('register_urls') do
-  #     res = Faraday.post(@base_url + '/mpesa/urls', body.to_json, @headers)
-  #     assert_equal(200, res.status)
-  #   end
-  # end
-
   def test_payouts
     body = {
       data: {
