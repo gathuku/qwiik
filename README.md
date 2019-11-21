@@ -31,7 +31,6 @@ Qwiik.configuration do |config|
   config.confiramtion_url = "https://example.com/confirm",
   config.validation_url = "https://example.com/validate",
   config.short_code = 600398
-
 end
 
 ```
@@ -43,10 +42,10 @@ The gem can be used to make payouts.
 
 ### To customers
 To make a customer payout use:
-> Category must be `BusinessPayment` 
+> Category must be `BusinessPayment`
 
 ```ruby
-  def payouts(category:, amount:, recipient_no:, reference:)
+  Qwiik.payouts(category:, amount:, recipient_no:, reference:)
 ```
 __Parameters__
 
@@ -57,9 +56,49 @@ __Parameters__
 
 __Example__
 ```ruby
-  def payouts(category:'BusinessPayment', amount:100, recipient_no:'0722000024', reference:'11234578')
+  Qwiik.payouts(category:'BusinessPayment', amount:100, recipient_no:'0722000024', reference:'11234578')
+```
+### To BusinessPayBill
+To make a customer payout use:
+> Category must be `BusinessPayBill`
+
+> Recepient_no must be a __paybil__ no
+
+```ruby
+  Qwiik.payouts(category:, amount:, recipient_no:, reference:)
+```
+__Parameters__
+
+1. `category:` `String` - category of the payment.
+2. `amount: ` `Integer` - amount to be paid
+3. `recepient_no:` `String` - Paybill number of the recepient.
+4. `reference:` `String`  - payment reference
+
+__Example__
+```ruby
+  Qwiik.payouts(category:'BusinessPayBill', amount:100, recipient_no:'601000', reference:'11234578')
 ```
 
+### To BusinessBuyGoods
+To make a businessBuyGoods payout use:
+> Category must be `BusinessBuyGoods`
+
+> Recepient_no must be a __till__ no.
+
+```ruby
+  Qwiik.payouts(category:, amount:, recipient_no:, reference:)
+```
+__Parameters__
+
+1. `category:` `String` - category of the payment.
+2. `amount: ` `Integer` - amount to be paid
+3. `recepient_no:` `String` - Till no number of the recepient.
+4. `reference:` `String`  - payment reference
+
+__Example__
+```ruby
+  Qwiik.payouts(category:'BusinessBuyGoods', amount:100, recipient_no:'116261', reference:'11234578')
+```
 
 ## Development
 
@@ -69,7 +108,7 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/qwiik. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [code of conduct](https://github.com/[USERNAME]/qwiik/blob/master/CODE_OF_CONDUCT.md).
+Bug reports and pull requests are welcome on GitHub at https://github.com/gathuku/qwiik. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [code of conduct](https://github.com/gathuku/qwiik/blob/master/CODE_OF_CONDUCT.md).
 
 
 ## License
