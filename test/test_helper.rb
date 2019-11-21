@@ -1,14 +1,25 @@
 # frozen_string_literal: true
 
 $LOAD_PATH.unshift File.expand_path('../lib', __dir__)
+require 'simplecov'
+SimpleCov.start
 require 'qwiik'
 
 require 'minitest/autorun'
+require 'faraday'
 require 'webmock/minitest'
 require 'vcr'
 require 'openssl'
 require 'uri'
 require 'securerandom'
+require 'simplecov'
+require 'simplecov-lcov'
+require 'minitest/reporters'
+
+# minitest reporters
+Minitest::Reporters.use! Minitest::Reporters::SpecReporter.new
+
+# SimpleCov.start 'rails'
 
 # configure vcr
 VCR.configure do |config|

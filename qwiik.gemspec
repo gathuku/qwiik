@@ -29,13 +29,14 @@ Gem::Specification.new do |spec|
   spec.executables   = spec.files.grep(%r{^exe/}) { |f| File.basename(f) }
   spec.require_paths = ['lib']
   # dependancies
-  gem.add_dependency 'faraday', '~> 0.17.0'
-  gem.add_dependency 'json', '~> 2.2'
-  gem.add_dependency 'webmock', '~> 3.7', '>= 3.7.6'
-  gem.add_dependency 'vcr'
-  gem.add_dependency 'minitest', '~> 5.0'
-  gem.add_dependency 'openssl'
-
+  spec.add_runtime_dependency 'faraday', '~> 0.17.0'
+  spec.add_runtime_dependency 'json', '~> 2.2'
+  spec.add_runtime_dependency 'openssl'
+  # request
+  spec.add_development_dependency 'minitest', '~> 5.0'
+  spec.add_development_dependency 'minitest-reporters'
+  spec.add_development_dependency 'vcr'
+  spec.add_development_dependency 'webmock', '~> 3.7', '>= 3.7.6'
   # debugging
   spec.add_development_dependency 'byebug'
   spec.add_development_dependency 'pry-byebug'
