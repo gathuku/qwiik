@@ -14,7 +14,7 @@ class QwiikMainTest < Minitest::Test
 
   # Business paybill payouts_
   def test_payouts_to_business_paybill
-    body = FIXTURES['paybil'].to_json
+    body = FIXTURES['paybill'].to_json
     VCR.use_cassette('payouts_business_paybill') do
       res = Faraday.post(@base_url + '/mpesa/payouts', body, @headers)
       assert_equal(200, res.status)

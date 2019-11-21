@@ -40,8 +40,8 @@ class Minitest::Test
     end
 
     # default headers
-    key = Qwiik.configuration.key
-    secret = Qwiik.configuration.secret
+    key = ENV['QWIIK_PAYOUT_KEY']
+    secret = ENV['QWIIK_PAYOUT_SECRET']
     @headers = {
       'accept' => 'application/vnd.api+json',
       'Content-Type' => 'application/vnd.api+json',
