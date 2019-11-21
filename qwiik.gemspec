@@ -28,8 +28,19 @@ Gem::Specification.new do |spec|
   spec.bindir        = 'exe'
   spec.executables   = spec.files.grep(%r{^exe/}) { |f| File.basename(f) }
   spec.require_paths = ['lib']
+  # dependancies
+  gem.add_dependency 'faraday', '~> 0.17.0'
+  gem.add_dependency 'json', '~> 2.2'
+  gem.add_dependency 'webmock', '~> 3.7', '>= 3.7.6'
+  gem.add_dependency 'vcr'
+  gem.add_dependency 'minitest', '~> 5.0'
+  gem.add_dependency 'openssl'
 
-  # gem.add_dependency 'faraday', '~> 0.17.0'
-  # gem.add_dependency 'json', '~> 2.2'
-  # gem.add_dependency 'webmock', '~> 3.7', '>= 3.7.6'
+  # debugging
+  spec.add_development_dependency 'byebug'
+  spec.add_development_dependency 'pry-byebug'
+  # code coverage
+  spec.add_development_dependency 'simplecov'
+  spec.add_development_dependency 'simplecov-lcov'
+  spec.add_development_dependency 'undercover'
 end
