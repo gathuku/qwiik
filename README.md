@@ -36,22 +36,31 @@ end
 
 ```
 ## Usage
-The gem contains the following methods.
-1. __`register_urls`__ - Register C2B urls ie `confirmation_url`and `validation_url`.
+The gem can be used to make payouts.
+1. Business to customer(B2C)
+2. Business to BusinessPayBill(B2B)
+3. Business to BusinessBuyGoods(B2B)
 
-2. __`payouts`__ - Used to send a B2C payment to customers.Upon success  cunstomer wallet is credited. This could be `promotion payment`, `salary` etc
+### To customers
+To make a customer payout use:
+> Category must be `BusinessPayment` 
 
-## Register Urls
-`register_urls` method is used.The method requires `response_type` parameters.
-
-syntax
+```ruby
+  def payouts(category:, amount:, recipient_no:, reference:)
 ```
-register_urls("Completed")
+__Parameters__
+
+1. `category:` `String` - category of the payment.
+2. `amount: ` `Integer` - amount to be paid
+3. `recepient_no:` `String` - Phone number of the recepient.
+4. `reference:` `String`  - payment reference
+
+__Example__
+```ruby
+  def payouts(category:'BusinessPayment', amount:100, recipient_no:'0722000024', reference:'11234578')
 ```
 
-> Parameters can be `Completed` or `Cancelled`.
->> When completed it doent care what response is sent by your `validation_url` and completes the transaction.
->> When `Cancelled` you must respond with `success` in your validation_url to complete the transaction
+
 ## Development
 
 After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake test` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
