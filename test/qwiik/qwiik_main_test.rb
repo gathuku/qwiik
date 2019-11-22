@@ -29,4 +29,10 @@ class QwiikMainTest < Minitest::Test
       assert_equal(200, res.status)
     end
   end
+
+  # Hash generate
+  def test_it_generate_signature
+    refute_nil Qwiik.generate_signature(key: @key, secret: @secret)
+    refute_nil Time.now.strftime('%a, %d %b %Y %H:%M:%S EAT')
+  end
 end
