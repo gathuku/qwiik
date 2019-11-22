@@ -6,7 +6,6 @@
 [![Latest Version](https://img.shields.io/github/release/gathuku/qwiik.svg?style=flat-square)](https://github.com/gathuku/qwiik/releases)
 [![Issues](https://img.shields.io/github/issues/gathuku/laravel_mpesa.svg?style=flat-square)](https://github.com/gathuku/qwiik/issues)
 
-
 A gem for cunsuming daraja 2.0 API.
 
 ## Installation
@@ -61,18 +60,18 @@ To make a customer payout use:
 ```ruby
   Qwiik.payouts(category:, amount:, recipient_no:, reference:)
 ```
-__Parameters__
+###### Parameters
 
-1. `category:` `String` - category of the payment.
-2. `amount: ` `Integer` - amount to be paid
-3. `recepient_no:` `String` - Phone number of the recepient.
-4. `reference:` `String`  - payment reference
+1. `category:`   `String` - category of the payment.
+2. `amount: `   `Integer` - amount to be paid
+3. `recepient_no:`   `String` - Phone number of the recepient.
+4. `reference:`  `String`  - payment reference
 
-__Example__
+###### Example
 ```ruby
 responce=Qwiik.payouts(category:'BusinessPayment', amount:100, recipient_no:'0722000024', reference:'11234578')
 ```
-__Response__
+###### Response
 
 Body `response.body`
 ```json
@@ -90,20 +89,20 @@ Body `response.body`
 ### To BusinessPayBill
 To make a customer payout use:
 > Category must be `BusinessPayBill`
-
+>
 > Recepient_no must be a __paybil__ no
 
 ```ruby
   Qwiik.payouts(category:, amount:, recipient_no:, reference:)
 ```
-__Parameters__
+###### Parameters
 
-1. `category:` `String` - category of the payment.
-2. `amount: ` `Integer` - amount to be paid
-3. `recepient_no:` `String` - Paybill number of the recepient.
-4. `reference:` `String`  - payment reference
+1. `category:`  `String` - category of the payment.
+2. `amount: `   `Integer` - amount to be paid
+3. `recepient_no:`   `String` - Paybill number of the recepient.
+4. `reference:`   `String`  - payment reference
 
-__Example__
+###### Example
 ```ruby
   Qwiik.payouts(category:'BusinessPayBill', amount:100, recipient_no:'601000', reference:'11234578')
 ```
@@ -111,20 +110,20 @@ __Example__
 ### To BusinessBuyGoods
 To make a businessBuyGoods payout use:
 > Category must be `BusinessBuyGoods`
-
+>
 > Recepient_no must be a __till__ no.
 
 ```ruby
   Qwiik.payouts(category:, amount:, recipient_no:, reference:)
 ```
-__Parameters__
+###### Parameters
 
-1. `category:` `String` - category of the payment.
-2. `amount: ` `Integer` - amount to be paid
-3. `recepient_no:` `String` - Till no number of the recepient.
-4. `reference:` `String`  - payment reference
+1. `category:`   `String` - category of the payment.
+2. `amount: `   `Integer` - amount to be paid
+3. `recepient_no:`   `String` - Till no number of the recepient.
+4. `reference:`   `String`  - payment reference
 
-__Example__
+###### Example
 ```ruby
   Qwiik.payouts(category:'BusinessBuyGoods', amount:100, recipient_no:'116261', reference:'11234578')
 ```
