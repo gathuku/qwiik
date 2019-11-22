@@ -13,7 +13,6 @@ require 'openssl'
 require 'uri'
 require 'securerandom'
 require 'simplecov'
-require 'simplecov-lcov'
 require 'minitest/reporters'
 require 'coveralls'
 

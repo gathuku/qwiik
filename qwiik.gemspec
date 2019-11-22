@@ -41,8 +41,6 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency 'byebug'
   spec.add_development_dependency 'pry-byebug'
   # code coverage
-  spec.add_development_dependency 'coveralls'
-  spec.add_development_dependency 'simplecov'
-  spec.add_development_dependency 'simplecov-lcov'
-  spec.add_development_dependency 'undercover'
+  spec.add_development_dependency 'coveralls', '~> 0.8'
+  spec.add_development_dependency 'simplecov', '~> 0.16.1'
 end
