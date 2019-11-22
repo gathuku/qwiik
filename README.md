@@ -14,17 +14,21 @@ A gem for cunsuming daraja 2.0 API.
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'qwiik'
+gem 'qwiik', :git => 'git@github.com:gathuku/qwiik.git'
 ```
 
 And then execute:
-
+```
     $ bundle install
-
+```
 Or install it yourself as:
+```
+    $ git clone git@github.com:gathuku/qwiik.git
 
-    $ gem install qwiik
+    $ cd qwiik && gem build qwiik.gemspec
 
+    $ gem install qwiik-[version].gem
+```
 ## Configuration
 To get started add your credentials to environment variables
 ```sh
@@ -66,7 +70,22 @@ __Parameters__
 
 __Example__
 ```ruby
-  Qwiik.payouts(category:'BusinessPayment', amount:100, recipient_no:'0722000024', reference:'11234578')
+responce=Qwiik.payouts(category:'BusinessPayment', amount:100, recipient_no:'0722000024', reference:'11234578')
+```
+__Response__
+
+Body `response.body`
+```json
+ /* json */
+{
+  "data": {
+    "type": "responses",
+    "id": "AG_20191121_000046e92fe975f006d7",
+    "attributes": {
+      "resource_id": "bae4b140-8db7-4dc1-9be1-5650383d48f3"
+    }
+  }
+}
 ```
 ### To BusinessPayBill
 To make a customer payout use:
