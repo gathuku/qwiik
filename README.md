@@ -60,6 +60,7 @@ To make a customer payout use:
 ```ruby
   Qwiik.payouts(category:, amount:, recipient_no:, reference:)
 ```
+
 ###### Parameters
 
 1. `category:`   `String` - category of the payment.
@@ -69,8 +70,19 @@ To make a customer payout use:
 
 ###### Example
 ```ruby
-responce=Qwiik.payouts(category:'BusinessPayment', amount:100, recipient_no:'0722000024', reference:'11234578')
+responce=Qwiik.payouts(category: 'BusinessPayment', amount:100, recipient_no: '0722000024', reference: '11234578')
 ```
+Alternatively
+```ruby
+args={
+  category:'BusinessPayment',
+  amount:100,
+  recipient_no: '0722000024',
+  reference:'11234578'
+}
+response=Qwiik.payouts(args)
+```
+
 ###### Response
 
 Body `response.body`

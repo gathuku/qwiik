@@ -21,10 +21,27 @@ module Qwiik
                    attributes: {
                      "category": 'BusinessBuyGoods',
                      "amount": amount,
-                     "recipient_no": recepient_no,
+                     "recipient_no": recipient_no,
                      "recipient_type": 'shortcode',
                      "posted_at": '2019-03-18T17:22:09.651011Z',
                      "reference": reference
+                   }
+                 }
+               }
+             elsif category == 'BusinessPayBill'
+               {
+                 data: {
+                   type: 'payouts',
+                   id: SecureRandom.uuid,
+                   attributes: {
+                     category: category,
+                     amount: amount,
+                     recipient_no: recipient_no,
+                     recipient_type: 'shortcode',
+                     posted_at: '2019-03-18T17:22:09.651011Z',
+                     recipient_id_type: 'national_id',
+                     recipient_id_number: '21212121',
+                     reference: reference
                    }
                  }
                }
@@ -45,7 +62,7 @@ module Qwiik
                    }
                  }
                }
-           end
+             end
       # make the request
       call(path: '/mpesa/payouts', body: body.to_json)
     end
