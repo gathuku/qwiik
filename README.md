@@ -26,12 +26,21 @@ Or install it yourself as:
     $ gem install qwiik
 
 ## Configuration
-To get started configure the gem with your own credentials.
+To get started add your credentials to environment variables
+```sh
+export QWIIK_PAYOUT_KEY = your_payout_key
+export QWIIK_PAYOUT_SECRET = your_payout_secret
+```
+Then configure the gem with.
 ```ruby
 Qwiik.configuration do |config|
-  config.confiramtion_url = "https://example.com/confirm",
-  config.validation_url = "https://example.com/validate",
-  config.short_code = 600398
+  # If sandbox
+  config.base_url='https://api-staging.qwwik.com'
+  # If live
+  config.base_url='https://api.qwwik.com'
+
+  key= ENV['QWIIK_PAYOUT_KEY']
+  secret=ENV['QWIIK_PAYOUT_SECRET']
 end
 
 ```
