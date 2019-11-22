@@ -15,6 +15,10 @@ require 'securerandom'
 require 'simplecov'
 require 'simplecov-lcov'
 require 'minitest/reporters'
+require 'coveralls'
+
+# coverage
+Coveralls.wear!
 
 # minitest reporters
 Minitest::Reporters.use! Minitest::Reporters::SpecReporter.new

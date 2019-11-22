@@ -5,7 +5,7 @@
 [![Coverage Status](https://coveralls.io/repos/github/gathuku/qwiik/badge.svg?branch=master)](https://coveralls.io/github/gathuku/qwiik?branch=master)
 [![Latest Version](https://img.shields.io/github/release/gathuku/qwiik.svg?style=flat-square)](https://github.com/gathuku/qwiik/releases)
 [![Issues](https://img.shields.io/github/issues/gathuku/laravel_mpesa.svg?style=flat-square)](https://github.com/gathuku/qwiik/issues)
-[![Twiter](https://img.shields.io/twitter/url/https/github.com/gathuku/qwiik.svg?style=social?style=social)](https://twitter.com/Gathukumose)
+
 
 A gem for cunsuming daraja 2.0 API.
 
